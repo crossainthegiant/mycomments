@@ -18,20 +18,20 @@ if (mb_strlen($nickname) < 3 || mb_strlen($nickname) > 16) {
     echo '昵称长度应在3-16之间！<a href="index.php">重新填写</a>';
     exit;
 }
-$url = $_POST['personalSite'];
+//$url = $_POST['personalSite'];
 
-//if (!(isset($_POST['personalSite']) && (!empty($_POST['personalSite'])))) {
-//    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%
-//=~_|]/i", $_POST['personalSite'])
-//    ) {
-//        echo '个人站点格式不正确<a href="index.php">返回</a>';
-//        exit;
-//    } else {
-//        $url = $_POST['personalSite'];
-//    }
-//} else {
-//    $url = '';
-//}
+if ((isset($_POST['personalSite']) && (!empty($_POST['personalSite'])))) {
+    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%
+=~_|]/i", $_POST['personalSite'])
+    ) {
+        echo '个人站点格式不正确<a href="index.php">返回</a>';
+        exit;
+    } else {
+        $url = $_POST['personalSite'];
+    }
+} else {
+    $url = '';
+}
 $commenttime = time();
 //echo $nickname;
 //echo $commenttime;

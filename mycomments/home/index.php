@@ -1,3 +1,20 @@
+<?php
+require_once ('../connect.php');
+$sql = "SELECT * FROM comments ORDER BY commenttime DESC ";
+$res = $mysqli->query($sql);
+if ($res&&$res->num_rows){
+    while ($row = $res->fetch_assoc()){
+        $data[]=$row;
+    }
+}else{
+    $data = array();
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +32,24 @@
         <li><a href="../admin/login.php">个人中心</a></li>
     </ul>
 </nav>
+<?php
+if (!empty($data)){
+    foreach ($data as $value){
+        ?>
+        <div class="container">
+            <h4><a href="<?php echo $value['personalsite']; ?>"><?php echo $value['nickname']?></a></h4>
+            <p class="text-center"><?php echo $value['comment'];?></p>
+            <p class="text-right"><?php echo date("Y-m-d H:i:s",$value['commenttime']);?></p>
+            <div <?php if (!(isset($value['reply']) && (!empty($value['reply'])))) echo "style=\"display:none\"" ; ?> >
+                <p class="text-center"><?php echo $value['reply'];?></p>
+                <p class="text-right"><?php echo $value['replytime'];?></p>
+            </div>
+        </div>
+        
+        
+ <?php   }
+}
+?>
 <div class="container">
     <form class="form-horizontal" role="form" method="post" action="doAction.php">
         <div class="form-group">
