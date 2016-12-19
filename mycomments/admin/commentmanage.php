@@ -1,11 +1,23 @@
 <?php
+require_once ('../connect.php');
 session_start();
-
 //检测是否登录，若没登录则转向登录界面
 if(!isset($_SESSION['username'])){
     echo "<script>location.href='login.php'</script>";
     exit();
 }
+
+
+$sql = "SELECT * FROM comments ORDER BY commenttime";
+$res = $mysqli->query($sql);
+if ($res&&$res->num_rows){
+    while ($row = $res->fetch_assoc()){
+        $data[]=$row;
+    }
+}else{
+    $data = array();
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +63,22 @@ if(!isset($_SESSION['username'])){
         </tr>
         </thead>
         <tbody>
-        
+        <?php
+        if (!empty($data)){
+            foreach ($data as $value){ ?>
+                <tr>
+                    <td><?php echo $value['nickname'];?></td>
+                    <td><?php echo $value['personalsite'];?></td>
+                    <td><?php echo $value['comment'];?></td>
+                    <td><?php echo date("Y-m-d H:i:s",$value['commenttime']);?></td>
+                    <td><?php echo $value['reply'];?></td>
+                    <td><?php echo date("Y-m-d H:i:s",$value['replytime']);?></td>
+                    <td><a href="reply.php?id=<?php echo $value['id']?>">回复</a>/<a href="deleteevent.php?id=<?php echo $value['id']?>">删除</a></td>
+                </tr>
+
+         <?php   }
+        }
+        ?>
         </tbody>
     </table>
 </div>
