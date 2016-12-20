@@ -42,7 +42,7 @@ if (!empty($data)){
             <p class="text-right"><?php echo date("Y-m-d H:i:s",$value['commenttime']);?></p>
             <div <?php if (!(isset($value['reply']) && (!empty($value['reply'])))) echo "style=\"display:none\"" ; ?> >
                 <p class="text-center"><?php echo $value['reply'];?></p>
-                <p class="text-right"><?php echo $value['replytime'];?></p>
+                <p class="text-right"><?php echo date("Y-m-d H:i:s",$value['replytime']);?></p>
             </div>
         </div>
         

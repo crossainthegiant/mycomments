@@ -46,7 +46,7 @@ if ($res){
     </ul>
 </nav>
 <div class="container">
-    <form class="form-horizontal" role="form" method="post" action="replyhandle.php?id='<?php echo $row['id']?>'">
+    <form class="form-horizontal" role="form" method="post" action="replyhandle.php?id='<?php echo $id?>'">
         <div class="form-group">
             <label for="currentcomment" class="col-sm-2 control-label">原留言</label>
             <div class="col-sm-10">

@@ -17,7 +17,7 @@ $replytime = time();
 //var_dump($id);
 //var_dump($reply);
 //var_dump($replytime);
-$sql = "INSERT INTO comments(reply,replytime)VALUES ('$reply','$replytime')WHERE id='$id'";
+$sql = "UPDATE `comments` SET `reply`='$reply',`replytime`=$replytime WHERE id=$id";
 $res = $mysqli->query($sql);
 if ($res){
     echo "<script>alert('回复成功');window.location.href = 'commentmanage.php'</script>";
