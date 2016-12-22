@@ -21,6 +21,7 @@ if ($res&&$res->num_rows){
     <meta charset = "utf-8">
     <title>demo</title>
     <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
 <nav class = "navbar navbar-default" role = "navigation">
@@ -36,12 +37,12 @@ if ($res&&$res->num_rows){
 if (!empty($data)){
     foreach ($data as $value){
         ?>
-        <div class="container">
+        <div class="container" id="comment-border">
             <h4><a href="<?php echo $value['personalsite']; ?>"><?php echo $value['nickname']?></a></h4>
             <p class="text-center"><?php echo $value['comment'];?></p>
             <p class="text-right"><?php echo date("Y-m-d H:i:s",$value['commenttime']);?></p>
-            <div <?php if (!(isset($value['reply']) && (!empty($value['reply'])))) echo "style=\"display:none\"" ; ?> >
-                <p class="text-center"><?php echo $value['reply'];?></p>
+            <div id="reply-border" <?php if (!(isset($value['reply']) && (!empty($value['reply'])))) echo "style=\"display:none\"" ; ?> >
+                <p class="text-left">admin的回复：<?php echo $value['reply'];?></p>
                 <p class="text-right"><?php echo date("Y-m-d H:i:s",$value['replytime']);?></p>
             </div>
         </div>
@@ -51,6 +52,7 @@ if (!empty($data)){
 }
 ?>
 <div class="container">
+    <h2 class="text-center">留言</h2>
     <form class="form-horizontal" role="form" method="post" action="doAction.php">
         <div class="form-group">
             <label for="nickname" class="col-sm-2 control-label">昵称</label>

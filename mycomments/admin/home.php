@@ -37,7 +37,21 @@ if(!isset($_SESSION['username'])){
         </li>
     </ul>
 </nav>
-
+<div class="container">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">欢迎</div>
+        <!-- List group -->
+        <ul class="list-group">
+            <li class="list-group-item">PHP版本：<?php echo PHP_VERSION;?></li>
+            <li class="list-group-item">服务器端信息：<?PHP echo $_SERVER['SERVER_SOFTWARE']; ?></li>
+            <li class="list-group-item">服务器操作系统： <?PHP echo PHP_OS; ?></li>
+            <li class="list-group-item">运行环境：<?php echo $_SERVER['SERVER_SOFTWARE'];?></li>
+            <li class="list-group-item">ip地址：<?php echo $_SERVER["REMOTE_ADDR"]; ?></li>
+            <li class="list-group-item">服务器时间：<?php echo date("Y-m-d H:i:s",time());?></li>
+        </ul>
+    </div>
+</div>
 <script type="text/javascript" src = "//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 

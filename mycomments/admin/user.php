@@ -1,11 +1,13 @@
 <?php
 session_start();
-
+require_once ("../connect.php");
 //检测是否登录，若没登录则转向登录界面
 if(!isset($_SESSION['username'])){
     echo "<script>location.href='login.php'</script>";
     exit();
 }
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,5 +39,18 @@ if(!isset($_SESSION['username'])){
         </li>
     </ul>
 </nav>
+<div class="container">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">用户信息<a href="password_reverse.php">修改密码</a> </div>
+        <!-- List group -->
+        <ul class="list-group">
+            <li class="list-group-item">用户名：admin</li>
+            <li class="list-group-item">用户邮箱:admin@163.com</li>
+
+
+        </ul>
+    </div>
+</div>
 </body>
 </html>
