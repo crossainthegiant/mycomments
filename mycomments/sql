@@ -1,0 +1,16 @@
+/*
+建立留言和回复表
+ */
+CREATE TABLE `commentsubject`.`comments` ( `id` INT(5) NOT NULL AUTO_INCREMENT , `nickname` VARCHAR(50) NOT NULL , `comment` VARCHAR(250) NOT NULL , `commenttime` INT(50) NOT NULL , `reply` VARCHAR(250) NOT NULL DEFAULT '' , `replytime` INT(50) NOT NULL DEFAULT '0' , `personalsite` VARCHAR(50) NOT NULL DEFAULT 'www.baidu.com ' , PRIMARY KEY (`id`), UNIQUE (`nickname`)) ENGINE = InnoDB;
+
+
+/*
+建立后台用户信息表
+ */
+
+CREATE TABLE `commentsubject`.`guestbook` ( `id` INT(5) NOT NULL AUTO_INCREMENT , `username` CHAR(50) NOT NULL , `password` VARCHAR(50) NOT NULL , `email` VARCHAR(50) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+/*
+插入一条后台用户信息用于登录
+ */
+INSERT INTO `guestbook` (`id`, `username`, `password`, `email`) VALUES (NULL, 'admin', 'admin', 'admin@163.com')
